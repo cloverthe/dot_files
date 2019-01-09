@@ -76,9 +76,9 @@ bindsym XF86AudioPrev exec "playerctl previous"
 ################################################################################################
 #Language settings
 exec_always "setxkbmap -model pc105 -layout us,ru,de"
-bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
-bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap ru
-bindsym Ctrl+Shift+3 exec --no-startup-id setxkbmap de
+bindsym Ctrl+Shift+1 exec --no-startup-id "setxkbmap -layout us,ru,de  -model pc105"
+bindsym Ctrl+Shift+2 exec --no-startup-id "setxkbmap -layout ru,de,us  -model pc105"
+bindsym Ctrl+Shift+3 exec --no-startup-id "setxkbmap -layout de,us,ru  -model pc105"
 # set $keyboard_layout Keyboard Layout: (e) english, (r) russian, (g)german
 # mode "$keyboard_layout" {
 
@@ -190,15 +190,24 @@ bindsym $mod+Ctrl+Left move workspace to output left
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:zsh
-set $ws2 2:firefox
-set $ws3 3:things
-set $ws4 4:code
-set $ws5 5:music
-set $ws6 6:video
-set $ws7 7:irc
-set $ws8 8:discord
-set $ws9 9:work
+# set $ws1 1:zsh
+# set $ws2 2:firefox
+# set $ws3 3:things
+# set $ws4 4:code
+# set $ws5 5:music
+# set $ws6 6:video
+# set $ws7 7:irc
+# set $ws8 8:discord
+# set $ws9 9:work
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -253,7 +262,7 @@ for_window [class="^Unity$" title="^Importing Package$"] floating enabledd
 #java
 for_window [class="sample*"] floating enable
 #vlc
-for_window [class="vlc*"] floating enable
+# for_window [class="mpv"] floating enable
 #Deepin
 for_window [class="deepin*"] floating enable
 #Discord
@@ -371,7 +380,7 @@ bindsym $mod+l exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id xrandr --output DVI-D-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-5 --off --output DP-4 --off --output DP-3 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off
-
+exec_always --no-startup-id ~/.i3/polybar.sh &
 
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -451,24 +460,25 @@ set_from_resource $term_color15    color15
 #         urgent_workspace   #16a085 #FDF6E3 #E5201D
 #     }
 # }
-bar {
-	i3bar_command i3bar
-	# status_command bumblebee-status -m cmus spotify memory disk nvidiagpu pasource pasink date time  layout-xkb -p time.format="%H:%M" date.format="%Y-%m-%d (%a) " memory.format="{used}/{total}" disk.open=caja disk.format="{left}" -t gruvbox-powerline
-	status_command bumblebee-status -m cmus spotify memory disk nvidiagpu pasource pasink date time  layout-xkb -p time.format="%H:%M" date.format="%Y-%m-%d (%a) " memory.format="{used}/{total}" disk.open=caja disk.format="{left}" -t iceberg
-        position bottom
-            colors {
-        background #161821
-        statusline #282828
-        separator  #FBF1C7
+# bar {
+# 	i3bar_command i3bar
+# 	# status_command bumblebee-status -m cmus spotify memory disk nvidiagpu pasource pasink date time  layout-xkb -p time.format="%H:%M" date.format="%Y-%m-%d (%a) " memory.format="{used}/{total}" disk.open=caja disk.format="{left}" -t gruvbox-powerline
+# 	# status_command bumblebee-status -m cmus spotify memory disk nvidiagpu pasource pasink date time  layout-xkb -p time.format="%H:%M" date.format="%Y-%m-%d (%a) " memory.format="{used}/{total}" disk.open=caja disk.format="{left}" -t iceberg
+        
+#         position bottom
+#             colors {
+#         background #161821
+#         statusline #282828
+#         separator  #FBF1C7
 
-#                           border  backgr. text
-        focused_workspace  #FFFFFF #222222 #00FBE1
-        active_workspace   #FFFFFF #222222 #A0F1E8
-        inactive_workspace #595B5B #161821 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
+# #                           border  backgr. text
+#         focused_workspace  #FFFFFF #222222 #00FBE1
+#         active_workspace   #FFFFFF #222222 #A0F1E8
+#         inactive_workspace #595B5B #161821 #EEE8D5
+#         binding_mode       #16a085 #2C2C2C #F9FAF9
+#         urgent_workspace   #16a085 #FDF6E3 #E5201D
+#     }
+# }
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle

@@ -105,11 +105,13 @@ alias cls="clear"
 alias weather="curl -s wttr.in/essen"
 alias weathernow="curl -s wttr.in/essen | head -n 7" 
 
-alias top="vtop"
+alias top="vtop -t dark"
 alias oldtop="/usr/bin/top"
 alias yt2mp3="youtube-dl --extract-audio --audio-format mp3"
 alias radio="mpv --ytdl-format=\"[height<360]\" --no-video https://www.youtube.com/watch\?v\=hHW1oY26kxQ"
 alias radio_jazz="mpv --ytdl-format=\"[height<360]\" --no-video https://www.youtube.com/watch\?v\=2ccaHpy5Ewo"
+alias radio_youtube="mpv --no-video --shuffle --load-unsafe-playlists --ytdl-format='bestaudio[ext=m4a]' --no-resume-playback https://www.youtube.com/playlist\?list\=PLRwsWfFwOjn_82Xrfse3JXpRYYPl618__"
+alias whatismyip="wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d: -f 2 | cut -d\< -f 1"
 # Exports
 export PATH="/opt/anaconda/bin:$PATH"
 export TERM=xterm-256color 

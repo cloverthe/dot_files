@@ -1,0 +1,2 @@
+polybar left &
+polybar right &
